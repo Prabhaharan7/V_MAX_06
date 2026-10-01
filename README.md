@@ -34,59 +34,6 @@ Use these pre-seeded credentials to evaluate the platform from different operati
 
 ---
 
-## ⏱️ 90-Second Demo Script (Evaluator Walkthrough)
-
-Follow this structured 90-second workflow to demonstrate the end-to-end intelligence pipeline:
-
-### **Step 1 (0:00 - 0:15) • Single Observation Intake & Explainable AI**
-1. Log in as **HSE Officer** (`pranab.hse@oilindia.in`).
-2. Navigate to **Submit Report** (`/submit`).
-3. Click the preset: **"⚡ Energy Isolation Bypass (SIF)"** or type:
-   > *"Technician bypassed lockout tagout on discharge header electrical drive to expedite seal replacement before shift change without notifying control room engineer."*
-4. Click **"Submit & Execute SIF AI NLP Pipeline"**.
-5. **Observe**: Success toast appears with the assigned Report ID and an active processing spinner. Within seconds, the AI panel displays:
-   - **SIF-Potential Precursor Detected** ($92\%$ confidence)
-   - **Primary LSR**: `Energy Isolation`
-   - **Extracted Barrier Failure**: `Isolation Confirmation (LOTO)` with **High Severity**.
-
----
-
-### **Step 2 (0:15 - 0:30) • pgvector Safety Memory & Historical Fatality Matching**
-1. From the report detail or reports feed, observe the **Safety Memory (pgvector RAG)** section.
-2. The 384-dimensional embedding vector automatically retrieves the most semantically relevant historical fatality from Oil India's case library:
-   - **Matched Fatality Case**: *Lethal Stored Hydraulic Energy Release during Iron Roughneck Piston Servicing (2019)*.
-   - **Shared Root Cause**: *Bypass of mechanical lockout procedures during maintenance*.
-   - **Lessons Learned & Recommended Barrier Controls** are automatically highlighted for supervisor intervention.
-
----
-
-### **Step 3 (0:30 - 0:45) • Executive Site Rankings & Precursor Density**
-1. Navigate to **Dashboard** (`/dashboard`).
-2. View the **Top Row KPI Cards**:
-   - Total Reports: `300+ observations`
-   - `% SIF-Potential Precursors`: `~25% density`
-   - Active Alerts: `Critical barrier breach signals`
-   - Average Safety Index (SII): `82 / 100`.
-3. Review the **Sites Ranked by SIF-Precursor Density** (Horizontal Recharts bar chart) and the **Observations by IOGP Life-Saving Rule** chart showing *Energy Isolation* and *Safe Mechanical Lifting* as top vulnerability drivers.
-
----
-
-### **Step 4 (0:45 - 1:10) • Active Learning Review Queue (Human-in-the-Loop)**
-1. Click **Review Queue** (`/review-queue`) in the sidebar.
-2. Select an ambiguous field report with borderline confidence ($0.40 \le \text{confidence} \le 0.60$).
-3. Click **"Confirm as SIF Precursor"** or **"Mark as Routine / Non-SIF"**.
-4. **Observe**: The correction is logged to `model_feedback_log`, continuously calibrating few-shot semantic classifiers via active learning.
-
----
-
-### **Step 5 (1:10 - 1:30) • 90-Day Rolling Aggregation & SII Trend Improvement**
-1. Return to the Dashboard and click **"Recalculate 90d Trends"**.
-2. **Observe**: The scheduled pattern mining engine groups safety observations by `(activity, site location, barrier_type)` over a rolling 90-day window.
-3. Review the **Top Recurring Precursor Patterns Table** showing trend trajectory arrows (**RISING**, **STABLE**, **FALLING**).
-4. Verify that proactive barrier interventions reflect as a **FALLING** trend and an improved site Safety Index (SII).
-
----
-
 ## 🏗️ Architecture & Monorepo Structure
 
 ```text
